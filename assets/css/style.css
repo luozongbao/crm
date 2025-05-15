@@ -21,10 +21,171 @@ body {
     padding: 20px;
 }
 
-.navbar {
-    background-color: var(--dark-color);
+/* Installation Form Styles */
+.container.install {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.install h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.install h2 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.install .form-group {
+    margin-bottom: 20px;
+}
+
+.install label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--dark-color);
+    font-weight: bold;
+}
+
+.install input[type="text"],
+.install input[type="password"],
+.install input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.install input[type="text"]:focus,
+.install input[type="password"]:focus,
+.install input[type="email"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.install button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
     color: white;
-    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.install button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.install .error {
+    background: #fff2f2;
+    color: var(--danger-color);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #ffcdd2;
+}
+
+.install .success {
+    background: #f0fff0;
+    color: var(--success-color);
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #c8e6c9;
+}
+
+.install .success a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.install .success a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation Styles */
+.navbar {
+    background: var(--primary-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
+
+.navbar-brand:hover {
+    color: rgba(255,255,255,0.9);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: white;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 0.75rem 1rem;
+    }
 }
 
 .btn {

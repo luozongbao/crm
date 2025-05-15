@@ -1,5 +1,12 @@
 <?php
 define('BASE_PATH', dirname(__FILE__));
+
+// Check if config file exists
+if (!file_exists(BASE_PATH . '/includes/config.php')) {
+    header('Location: /admin/install.php');
+    exit();
+}
+
 require_once BASE_PATH . '/includes/config.php';
 require_once BASE_PATH . '/includes/functions.php';
 

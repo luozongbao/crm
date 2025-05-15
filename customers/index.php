@@ -1,5 +1,5 @@
 <?php
-define('BASE_PATH', dirname(__FILE__));
+define('BASE_PATH', dirname(dirname(__FILE__)));
 require_once BASE_PATH . '/includes/config.php';
 require_once BASE_PATH . '/includes/functions.php';
 

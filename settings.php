@@ -59,13 +59,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user_id === $_SESSION['user_id']) {
             set_flash_message(['type' => 'danger', 'message' => 'Cannot delete your own account.']);
         } else {
-            $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
-            $stmt->bind_param("i", $user_id);
+            // Check if this is the last admin
+            $stmt = $conn->prepare("SELECT COUNT(*) as admin_count FROM users WHERE role = 'Admin'");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $admin_count = $result->fetch_assoc()['admin_count'];
             
-            if ($stmt->execute()) {
-                set_flash_message(['type' => 'success', 'message' => 'User deleted successfully.']);
+            // Get the user's role
+            $stmt = $conn->prepare("SELECT role FROM users WHERE id = ?");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user_role = $result->fetch_assoc()['role'];
+            
+            if ($admin_count <= 1 && $user_role === 'Admin') {
+                set_flash_message(['type' => 'danger', 'message' => 'Cannot delete the last admin user.']);
             } else {
-                set_flash_message(['type' => 'danger', 'message' => 'Error deleting user.']);
+                $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+                $stmt->bind_param("i", $user_id);
+                
+                if ($stmt->execute()) {
+                    set_flash_message(['type' => 'success', 'message' => 'User deleted successfully.']);
+                } else {
+                    set_flash_message(['type' => 'danger', 'message' => 'Error deleting user.']);
+                }
             }
         }
     }

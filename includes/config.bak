@@ -1,10 +1,10 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'your_username');
-define('DB_PASS', 'your_password');
+define('DB_USER', 'reycrmdbuser');
+define('DB_PASS', 'P@ssw0rd4reycrmdbuser');
 define('DB_NAME', 'crm_db');
 
-define('SITE_URL', 'http://localhost/');
+define('SITE_URL', 'http://crm.home/');
 define('BASE_PATH', dirname(__DIR__));
 
 // Session lifetime in seconds (30 minutes)
